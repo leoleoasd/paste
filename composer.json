@@ -10,7 +10,10 @@
     "require": {
         "php": "^7.2",
         "doctrine/dbal": "^2.9",
+        "encore/laravel-admin": "^1.7",
         "fideloper/proxy": "^4.0",
+        "laravel-admin-ext/helpers": "^1.1",
+        "laravel-admin-ext/log-viewer": "^1.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0"
     },
