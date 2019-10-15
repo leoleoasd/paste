@@ -18,10 +18,16 @@
                     <option value="-1">Others</option>
                 </select>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="custom-control custom-checkbox" style="margin-top:5px">
                     <input type="checkbox" class="custom-control-input" id="format" name="format" checked>
                     <label class="custom-control-label" for="format">格式化代码</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="custom-control custom-checkbox" style="margin-top:5px">
+                    <input type="checkbox" class="custom-control-input" id="obfs" name="obfs">
+                    <label class="custom-control-label" for="obfs">代码防复制</label>
                 </div>
             </div>
         </div>

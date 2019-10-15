@@ -15,6 +15,7 @@ class MainController extends Controller
             $p->language = "cpp";
             $p->code = "";
             $p->syntax = "";
+            $p->obfs = $r->get("obfs") == 'on';
             $p->index = Str::random(8);
             while(Paste::where("index",$p->index)->first()){
                 $p->index = Str::random(8);
@@ -30,6 +31,7 @@ class MainController extends Controller
             exec("clang -fsyntax-only ".storage_path("app/".$p->id.".cpp")." 2>&1",$syntax);
             $syntax = join("\n", $syntax);
             $syntax = str_replace(storage_path("app/".$p->id.".cpp"),"程序中",$syntax);
+            $p->obfs = $r->get("obfs") == 'on';
             $p->code = $code;
             $p->syntax = $syntax;
             $p->save();
@@ -38,7 +40,13 @@ class MainController extends Controller
         }
         $p = new Paste();
         $p->language = $r->language != "-1" ? $r->language : "js";
-        $p->code = base64_decode($r->code);
+        $code = base64_decode($r->code);
+        if($r->get("obfs") == 'on'){
+            $code = str_split($code);
+            $code = implode('‍‍‍',$code);
+        }
+        $p->code= $code;
+        $p->obfs = $r->get("obfs") == 'on';
         $p->syntax = "";
         $p->index = Str::random(8);
         while(Paste::where("index",$p->index)->first()){

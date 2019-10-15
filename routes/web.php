@@ -16,10 +16,15 @@ Route::get('/', function () {
 });
 Route::post('/',"MainController@paste");
 Route::get("/p/{id}",function($id){
-    if((int)($id) and (int)$id <= 148 and config("app.env")!="beta")
-        return view("paste",['p'=>\App\Models\Paste::findOrFail($id),"google_ad_id"=>env("GOOGLE_AD_ID"),"google_anal_id"=>env("GOOGLE_ANAL_ID")]);
+    if((int)($id) and (int)$id <= 148 and config("app.env")!="beta") {
+        $p = \App\Models\Paste::findOrFail($id);
+        if($p->obfs) $p->code = implode('‍‍',preg_split('/(?<!^)(?!$)/u',$p->code));
+        return view("paste", ['p' =>$p,"google_ad_id" => env("GOOGLE_AD_ID"),"google_anal_id" => env("GOOGLE_ANAL_ID")]);
+    }
     if(\App\Models\Paste::where("index",$id)->first()){
-        return view("paste",['p'=>\App\Models\Paste::where("index",$id)->first(),"google_ad_id"=>env("GOOGLE_AD_ID"),"google_anal_id"=>env("GOOGLE_ANAL_ID")]);
+        $p = \App\Models\Paste::where("index",$id)->first();
+        if($p->obfs) $p->code = implode("&#x200D;",preg_split('/(?<!^)(?!$)/u',$p->code));
+        return view("paste", ['p' =>$p,"google_ad_id" => env("GOOGLE_AD_ID"),"google_anal_id" => env("GOOGLE_ANAL_ID")]);
     }
     throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 });
