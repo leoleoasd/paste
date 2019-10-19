@@ -17,7 +17,7 @@ class MainController extends Controller
             $p->syntax = "";
             $p->obfs = $r->get("obfs") == 'on';
             $p->index = Str::random(8);
-            while(Paste::where("index",$p->index)->first()){
+            while(Paste::where("index",$p->index)->count()){
                 $p->index = Str::random(8);
             }
             $p->save();
@@ -49,7 +49,7 @@ class MainController extends Controller
         $p->obfs = $r->get("obfs") == 'on';
         $p->syntax = "";
         $p->index = Str::random(8);
-        while(Paste::where("index",$p->index)->first()){
+        while(Paste::where("index",$p->index)->count()){
             $p->index = Str::random(8);
         }
         $p->save();

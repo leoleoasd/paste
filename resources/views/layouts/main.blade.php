@@ -56,7 +56,8 @@
 <footer class="footer">
     <div class="container">
         <span class="text-muted">&copy;2019</span>
-        在此处粘贴您的代码就视为您同意将您的代码以Apache协议开源.
+        使用本站即视为你放弃以任何理由起诉本站的权利.
+        根据相关法律法规, 本站不对欧盟用户提供服务.
         <a href="#" onclick="alert('举报成功!')">举报</a>
     </div>
 </footer>
