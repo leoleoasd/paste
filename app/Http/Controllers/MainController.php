@@ -28,7 +28,7 @@ class MainController extends Controller
                 $code = join("\n", $code);
             }
             Storage::disk("local")->put($p->id.".cpp",$code);
-            exec("docker run -v=".storage_path("app/".$p->id.".cpp").":/a.cpp  --rm clangbuiltlinux/ubuntu:latest /usr/lib/llvm-9/bin/clang /a.cpp -fsyntax-only -std=".$r->language." 2>&1",$syntax);
+            exec("docker run -v=".storage_path("app/".$p->id.".cpp").":/a.cpp  --rm clangbuiltlinux/ubuntu:latest /usr/lib/llvm-9/bin/clang /a.cpp -fsyntax-only -pedantic-errors -std=".$r->language." 2>&1",$syntax);
             $syntax = join("\n", $syntax);
             $syntax = str_replace("/a.cpp","程序中",$syntax);
             $p->obfs = $r->get("obfs") == 'on';
@@ -56,7 +56,7 @@ class MainController extends Controller
                 $code = join("\n", $code);
             }
             Storage::disk("local")->put($p->id.".c",$code);
-            exec("docker run -v=".storage_path("app/".$p->id.".c").":/a.c  --rm clangbuiltlinux/ubuntu:latest /usr/lib/llvm-9/bin/clang /a.c -fsyntax-only -std=".$r->language." 2>&1",$syntax);
+            exec("docker run -v=".storage_path("app/".$p->id.".c").":/a.c  --rm clangbuiltlinux/ubuntu:latest /usr/lib/llvm-9/bin/clang /a.c -fsyntax-only -pedantic-errors -std=".$r->language." 2>&1",$syntax);
             $syntax = join("\n", $syntax);
             $syntax = str_replace("/a.c","程序中",$syntax);
             $p->obfs = $r->get("obfs") == 'on';
