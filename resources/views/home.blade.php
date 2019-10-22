@@ -12,8 +12,13 @@
         <div class="row">
             <div class="col-md-6">
                 <select class="custom-select" name="language">
-                    <option value="c++">C++</option>
-                    <option value="c">C</option>
+                    <option value="c++11">C++11</option>
+                    <option value="c++14">C++14</option>
+                    <option value="c++17">C++17</option>
+                    <option value="c90">ANSI C</option>
+                    <option value="c99">C99</option>
+                    <option value="c11">C11</option>
+                    <option value="c17">C17</option>
                     <option value="python">Python</option>
                     <option value="-1">Others</option>
                 </select>
