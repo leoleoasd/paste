@@ -28,9 +28,9 @@ class MainController extends Controller
                 $code = join("\n", $code);
             }
             Storage::disk("local")->put($p->id.".cpp",$code);
-            exec("clang -fsyntax-only ".storage_path("app/".$p->id.".cpp")." 2>&1",$syntax);
+            exec("docker run -v=".storage_path("app/".$p->id.".cpp").":/a.cpp  --rm -i clangbuiltlinux/ubuntu:latest /usr/lib/llvm-9/bin/clang /a.cpp -fsyntax-only 2>&1",$syntax);
             $syntax = join("\n", $syntax);
-            $syntax = str_replace(storage_path("app/".$p->id.".cpp"),"程序中",$syntax);
+            $syntax = str_replace("/a.cpp","程序中",$syntax);
             $p->obfs = $r->get("obfs") == 'on';
             $p->code = $code;
             $p->syntax = $syntax;
