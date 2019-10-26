@@ -12,15 +12,15 @@
         <div class="row">
             <div class="col-md-6">
                 <select class="custom-select" name="language">
-                    <option value="c++11">C++11</option>
-                    <option value="c++14">C++14</option>
-                    <option value="c++17">C++17</option>
-                    <option value="c90">ANSI C</option>
-                    <option value="c99">C99</option>
-                    <option value="c11">C11</option>
-                    <option value="c17">C17</option>
-                    <option value="python">Python</option>
-                    <option value="-1">Others</option>
+                    <option value="c++11" @if(\Cookie::get("language")=="c++11") selected @endif>C++11</option>
+                    <option value="c++14" @if(\Cookie::get("language")=="c++14") selected @endif>C++14</option>
+                    <option value="c++17" @if(\Cookie::get("language")=="c++15") selected @endif>C++17</option>
+                    <option value="c90" @if(\Cookie::get("language")=="c90") selected @endif>ANSI C</option>
+                    <option value="c99" @if(\Cookie::get("language")=="c99") selected @endif>C99</option>
+                    <option value="c11" @if(\Cookie::get("language")=="c11") selected @endif>C11</option>
+                    <option value="c17" @if(\Cookie::get("language")=="c17") selected @endif>C17</option>
+                    <option value="python" @if(\Cookie::get("language")=="python") selected @endif>Python</option>
+                    <option value="-1" @if(\Cookie::get("language")=="-1") selected @endif>Others</option>
                 </select>
             </div>
             <div class="col-md-3">

@@ -6,10 +6,16 @@ use App\Models\Paste;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Str;
+use Illuminate\Support\Facades\Cookie;
 
 class MainController extends Controller
 {
     public function paste(Request $r){
+        $r->validate([
+            'language' => 'required',
+            'code' => 'required'
+        ]);
+        Cookie::queue('language', $r->language,3600);
         if(substr($r->language,0,3) == "c++"){
             $p = new Paste();
             $p->language = "cpp";
