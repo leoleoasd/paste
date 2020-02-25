@@ -14,7 +14,9 @@
 Route::get('/', function () {
     return view("home",["google_ad_id"=>env("GOOGLE_AD_ID"),"google_anal_id"=>env("GOOGLE_ANAL_ID")]);
 });
+
 Route::post('/',"MainController@paste");
+
 Route::get("/p/{id}",function($id){
     if(\App\Models\Paste::where("index",$id)->first()){
         $p = \App\Models\Paste::where("index",$id)->first();
