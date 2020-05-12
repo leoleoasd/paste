@@ -18,7 +18,7 @@
         });
     </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149534064-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{$google_anal_id}}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -38,19 +38,6 @@
 <main>
     <div class="container" style="margin-top: 20px;">
         @yield('content')
-        <div class="row">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- 2 -->
-            <ins class="adsbygoogle"
-                 style="display:block;width:100%;"
-                 data-ad-client="ca-pub-8076088517734186"
-                 data-ad-slot="1766135360"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
     </div>
 </main>
 <footer class="footer">
